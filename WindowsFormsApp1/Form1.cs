@@ -21,7 +21,8 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var linhas = textBoxEntrada.Text.Split(Environment.NewLine);
+            var textoDeEntrada = textBoxEntrada.Text.Replace(string.Concat(Environment.NewLine, Environment.NewLine), Environment.NewLine);
+            var linhas = textoDeEntrada.Split(Environment.NewLine);
             var textoDeSaida = new StringBuilder();
 
             for (int i = 0; i < linhas.Length;)
@@ -33,10 +34,10 @@ namespace WindowsFormsApp1
                 var textoTrasacao2 = linhas[i++];
 
                 if(!textoTrasacao2.StartsWith("R$"))
-                    textoDeSaida.Append(string.Concat(" ", textoTrasacao2, Tab, Tab, Tab, Tab, Tab));
+                    textoDeSaida.Append(string.Concat(" ", textoTrasacao2, Tab));
                 else
                 {
-                    textoDeSaida.Append(string.Concat(Tab, Tab, Tab, Tab, Tab));
+                    textoDeSaida.Append(string.Concat(Tab));
                     i--;
                 }
 
